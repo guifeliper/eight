@@ -1,0 +1,33 @@
+app: eight
+service: eigthPy
+
+frameworkVersion: '3'
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  stage: dev
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+  - serverless-wsgi
+
+custom:
+  wsgi:
+    app: app.app
+    packRequirements: false
