@@ -5,18 +5,6 @@ import pandas as pd
 from datetime import date
 import requests
 
-def get_eth_daily_data():
-    with open('./data/ETH_DAILY.json') as f:
-        data = json.load(f)
-        df = pd.DataFrame(data['data']['values'], columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-        return df
-
-def get_eth_weekly_data():
-    with open('./data/ETH_WEEKLY.json') as f:
-        data = json.load(f)
-        df = pd.DataFrame(data['data']['values'], columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-        return df
-
 def get_asset_data(ticker, startDate, endDate, interval):
   URL = "https://data.messari.io/api/v1/assets/"+ ticker +"/metrics/price/time-series"
   PARAMS = {'start': startDate,'end':  endDate, 'interval': interval, 'timestamp-format': "rfc3339"}
