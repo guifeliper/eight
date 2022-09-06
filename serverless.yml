@@ -15,8 +15,8 @@ provider:
   stage: dev
 
 functions:
-  hello:
-    handler: handler.hello
+  getAssetInfo:
+    handler: handler.getAssetInfo
     events:
       - httpApi:
           path: /
@@ -31,3 +31,5 @@ custom:
   wsgi:
     app: app.app
     packRequirements: false
+  pythonRequirements:
+    dockerizePip: true
